@@ -1,44 +1,74 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="/css/main.css">
         <script src="https://code.jquery.com/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <!-- 커스터마이징한 axiosInstace 들고있는 파일 -->
-        <script src="/custom_axios.js"></script>
+        <script src="/js/custom_axios.js"></script>
         
     </head>
+    <style>
+        #box{
+            text-align: center;
+        }
+        .title{
+            background-color: #d9d9d9;
+            padding: 50px;
+        }
+        #writer p {
+            display: inline-block;
+        }
+        #inner{
+            width: 700px;
+            margin: auto;
+            text-align: left;
+        }
+        #replyList{
+            list-style: none;
+            padding: 0;
+        }
+    </style>
     <body>
-        인증글 상세보기 </br>
-
-        <p id='write_nick'>글쓴사람</p>
-        <p id='content'>인증글 내용</p>
+        <div id="box">
+            <div class="title">
+                <h2>
+                    인증글 상세보기
+                </h2>
+            </div>
+    
+            <div id="inner">
+                <div id="writer">
+                    <p id='write_nick'>글쓴사람</p>
+                    <p id='content'>인증글 내용</p>
+                </div>
+                
+                <!-- 첨부된 사진들을 보는 목록 -->
+                <div id='imgList'>
         
-        <!-- 첨부된 사진들을 보는 목록 -->
-        <div id='imgList'>
-
+                </div>
+        
+                <!-- 좋아요 버튼 / 몇명이 좋아하는지 -->
+        
+                <button id='likeBtn'>좋아요</button> <span id='likeCount'>?명이 좋아합니다.</span>
+        
+        
+                <!-- 댓글 목록 -->
+                <ul id='replyList'>
+        
+                </ul>
+        
+                
+                <!-- 누구에게 답글을 다는지 표시하는 영역 -->
+                <div id='reReplyDiv'>
+        
+                    <span id='parentReplyWriter'>~~</span>에게 답글 다는 중 <button id='cancelReReplyBtn'>답글 취소</button>
+        
+                </div>
+                
+                <input id='replyContent' type="text" placeholder="댓글 내용을 입력하세요."> <button id='replyBtn'>댓글 달기</button>
+            </div>
         </div>
-
-        <!-- 좋아요 버튼 / 몇명이 좋아하는지 -->
-
-    </br></br>
-        <button id='likeBtn'>좋아요</button> <span id='likeCount'>?명이 좋아합니다.</span>
-
-
-        <!-- 댓글 목록 -->
-        <ul id='replyList'>
-
-        </ul>
-
-        
-        <!-- 누구에게 답글을 다는지 표시하는 영역 -->
-        <div id='reReplyDiv'>
-
-            <span id='parentReplyWriter'>~~</span>에게 답글 다는 중 <button id='cancelReReplyBtn'>답글 취소</button>
-
-        </div>
-        
-        <input id='replyContent' type="text" placeholder="댓글 내용을 입력하세요."> <button id='replyBtn'>댓글 달기</button>
 
         <script>
 

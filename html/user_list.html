@@ -1,19 +1,46 @@
 <html>
     <head>
+        <link rel="stylesheet" href="./css/main.css">
         <script src="https://code.jquery.com/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <!-- 커스터마이징한 axiosInstace 들고있는 파일 -->
-        <script src="/custom_axios.js"></script>
+        <script src="/js/custom_axios.js"></script>
         
     </head>
+    <style>
+        #box{
+            text-align: center;
+        }
+        .title{
+            background-color: #d9d9d9;
+            padding: 50px;
+        }
+        #onGoingUserListUl{
+            width: 300px;
+        }
+        #onGoingUserListUl li{
+            margin-bottom: 50px;
+        }
+        #onGoingUserListUl img{
+            width: 100%;
+        }
+        #onGoingUserListUl span{
+            display: inline-block;
+        }
+    </style>
     <body>
-        사용자 목록 화면<br>
-        참여중인 사람 명단
-
-        <ul id="onGoingUserListUl">
-
-        </ul>
+        <div id="box">
+            <div class="title">
+                <h2>
+                    사용자 목록 화면<br>
+                    참여중인 사람 명단
+                </h2>
+            </div>
+            <ul id="onGoingUserListUl">
+            </ul>
+        </div>
+        <span></span>
 
         <script>
             
@@ -45,9 +72,13 @@
                     let userInfoLi = $(
                         `
                         <li class='userListItem'>
-                            ${user.nick_name}
+                            <img class='profileImg' src=${user.profile_images[0].img_url}>
+                            <span>${user.nick_name}</span>
+                            <span>도전 ${user.project_days}일차</span>
+                            <span>인증 ${user.project_proof_days}일 완료</span>
                         </li>
                         `
+                
                     )
 
                     // onGoingUserListUl에 아이템으로 userInfoLi 변수를 추가.

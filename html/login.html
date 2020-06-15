@@ -1,16 +1,41 @@
-<script src="https://code.jquery.com/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<!-- 커스터마이징한 axiosInstace 들고있는 파일 -->
-<script src="/custom_axios.js"></script>
-
-로그인화면</br>
-
-<input id="emailInput" type="text" placeholder="이메일 입력"></input> </br>
-<input id="passwordInput" type="text" placeholder="비밀번호 입력"></input> </br>
-
-<button id="loginButton">로그인</button>
-<button id="signUpButton">회원가입</button>
+<link rel="stylesheet" type="text/css" href="/css/main.css">
+        <script src="https://code.jquery.com/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+        <!-- 커스터마이징한 axiosInstace 들고있는 파일 -->
+        <script src="/js/custom_axios.js"></script>
+<style>
+    .box{
+        text-align: center;
+        margin-top: 300px;
+    }
+    input{
+        width: 200px;
+        margin-bottom:30px;
+        padding:5px 10px;
+    }
+    .btns{
+        width: 100%;
+    }
+    button{
+        width: 100px;
+    }
+</style>
+<body>
+    <div class="box">
+        <h2>
+            LOGIN
+        </h2>
+        
+        <input id="emailInput" type="text" placeholder="이메일 입력"></input> </br>
+        <input id="passwordInput" type="password" placeholder="비밀번호 입력"></input> </br>
+        
+        <div class="btns">
+            <button id="loginButton">로그인</button>
+            <button id="signUpButton">회원가입</button>
+        </div>
+    </div>
+</body>
 
 <script>
 
@@ -33,6 +58,10 @@
         axiosInstance.post('/user', form)
             .then(function (res) {
                 
+                // 로그인 시에도 받아온 사용자 정보를 localStoage에 저장.
+                let user = res.data.data.user
+                localStorage.setItem('userInfo', JSON.stringify(user))
+
                 // 성공 응답에 담긴 토큰을 변수로 저장
                 let token = res.data.data.token
 

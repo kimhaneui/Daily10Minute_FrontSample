@@ -5,17 +5,55 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
         <!-- 커스터마이징한 axiosInstace 들고있는 파일 -->
-        <script src="/custom_axios.js"></script>
+        <script src="/js/custom_axios.js"></script>
         
     </head>
+    <style>
+        #box{
+            text-align: center;
+        }
+        .title{
+            background-color: #d9d9d9;
+            padding: 50px;
+        }
+        p{
+            display: inline-block;
+        }
+        .date{
+            text-align: left;
+        }
+        #content{
+            width: 1000px;
+            margin: auto;
+        }
+        #proofList{
+            width: 300px;
+        }
+        #proofList img{
+            width: 100%;
+        }
+
+    </style>
     <body>
-        날짜별 인증 내역 조회 </br>
-
-        인증 확인 날짜 <input id='date' type="date"> 
-
-        <ul id='proofList'>
-            
-        </ul>
+        <div id="box">
+            <div class="title">
+                <h2>
+                    날짜별 인증 내역 조회
+                </h2>
+            </div>
+    
+            <div id="content">
+                <div class="date">
+                    <p>
+                        인증 확인 날짜
+                    </p> <input id='date' type="date"> 
+                </div>
+        
+                <ul id='proofList'>
+                    
+                </ul>
+            </div>
+        </div>
 
         <script>
             

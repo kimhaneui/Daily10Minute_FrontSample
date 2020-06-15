@@ -2,17 +2,44 @@
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
 <!-- 커스터마이징한 axiosInstace 들고있는 파일 -->
-<script src="/custom_axios.js"></script>
+<script src="/js/custom_axios.js"></script>
+<style>
+    .title{
+        text-align: center;
+        background-color: #d9d9d9;
+        padding: 50px;
+    }
+    #content{
+        margin: auto;
+        width: 500px;
+        padding-top: 50px;
+    }
+    input{
+        width: 100%;
+        margin: 10px;
+    }
+    #proofButton{
+        width: 100%;
+        padding:10px 0;
+    }
+</style>
+<body>
+    <div class="title">
+        <h2>
+            오늘의 인증하기
+        </h2>
+    </div>
+    <div id="content">
+        <form id='proofForm'>
+            인증 내용 : <input name="content" type="text" placeholder="인증 메세지 입력"></input> </br>
+            인증샷 첨부 : <input name="proof_images" type="file"> </br>
+        </form>
+        <button id="proofButton">인증하기</button>
+    </div>
 
-오늘의 인증하기</br>
-
-<form id='proofForm'>
-    인증 내용 : <input name="content" type="text" placeholder="인증 메세지 입력"></input> </br>
-    인증샷 첨부 : <input name="proof_images" type="file"> </br>
-</form>
+</body>
 
 
-<button id="proofButton">인증하기</button>
 
 <script>
 
@@ -35,13 +62,17 @@
             .then(function (res) {
                 
                 console.log(res)
+                alert('오늘의 인증을 완료했습니다.')
+                // 프로젝트 상세보기 화면으로 복귀.
+                // 몇번프로젝트를 봐야하는지는 주소에 적혀있던 값 재활용
+                location.href = `project_detail.html?id=${projectId}`
 
             })
             .catch(function (error) {
                 // 실패시 error의 응답에 담긴 message를 얼럿으로
                 alert(error.response.data.message)
             })
-    })
+        })
     
 
 </script>

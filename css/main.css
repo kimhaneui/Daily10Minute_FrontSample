@@ -11,3 +11,11 @@
 .userNickName {
     font-weight: bold;
 }
+#onGoingUserListUl {
+    width: 200px;
+    list-style: none;
+}
+#onGoingUserListUl img{
+    width: 100%;
+}
+.user
