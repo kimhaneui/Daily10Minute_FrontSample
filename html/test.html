@@ -1,0 +1,54 @@
+<script>
+    const array = [9,4,9,7,3,1]
+
+    // 각 숫자별 방문 횟수를 저장할 Map
+    const timesMap = new Map()
+
+    // 1~5, 5~10, 10~3 돌아보기
+    for (let i = 0; i < array.length-1; ++i) {
+        let from = array[i]
+        let to = array[i+1]
+        
+        // 10~3은 3~10으로 처리되게
+        if (from > to) {
+            let backUp = from
+            from = to
+            to = backUp
+        }
+
+        // 1~5 등 각 단계별 숫자(num)으로 실제 돌기
+        for (let num=from ; num<= to; num++) {
+            
+            // num에 방문한적이 없다면
+            if (!timesMap.has(num)) {
+                // 해당 숫자에 1번 방문한걸로 기록
+                timesMap.set(num, 1)
+            }
+            else {
+                // 아니라면 => 해당 숫자에 기존 방문횟수+1회로 기록
+                timesMap.set(num, timesMap.get(num)+1)
+            }
+            
+        }
+        console.log(timesMap)
+    }
+
+    // 최대 방문횟수 + 그때 숫자 (Key) 를 기록하기 위한 변수 2개
+    let maxVal = 0
+    let maxKey = 0
+    // 방문횟수 Map에 있는 모든 항목을 key / value 쌍으로 꺼내봄
+    for (const [key, value] of timesMap.entries()) {
+        
+        // 이때 방문횟수가 내가 알던 최대 방문횟수보다 크다면
+        if (maxVal < value) {
+
+            // 최대방문횟수를 갈아엎고
+            maxVal = value
+            // 어떤 숫자에 대해 방문한건지도 기록함
+            maxKey = key
+        }
+    }
+    // 모두 돌아봤을때 제일 방문횟수가 큰걸로 남은 숫자(key) 를 출력
+    return(maxKey)
+
+</script>
